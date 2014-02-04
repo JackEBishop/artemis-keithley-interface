@@ -1,5 +1,61 @@
-﻿Build started 12/04/2013 09:48:33.
+﻿Build started 29/01/2014 13:18:55.
+     1>Project "C:\Users\manager\Documents\GitHub\artemis-keithley-interface\Kiethley 2410 Controller.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Kiethley 2410 Controller.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\gtkmm\include /IC:\gtkmm\include\freetype2 /I"C:\gtkmm\include\glib-2.0" /IC:\gtkmm\include\cairo /I"C:\gtkmm\include\pango-1.0" /I"C:\gtkmm\include\atk-1.0" /I"C:\gtkmm\include\gdk-pixbuf-2.0" /I"C:\gtkmm\include\gtk-2.0" /IC:\gtkmm\include\libxml2 /I"C:\gtkmm\include\libglade-2.0" /I"C:\gtkmm\include\sigc++-2.0" /I"C:\gtkmm\include\glibmm-2.4" /I"C:\gtkmm\include\giomm-2.4" /I"C:\gtkmm\include\cairomm-1.0" /I"C:\gtkmm\include\pangomm-1.4" /I"C:\gtkmm\include\atkmm-1.6" /I"C:\gtkmm\include\gdkmm-2.4" /I"C:\gtkmm\include\gtkmm-2.4" /I"C:\gtkmm\include\libxml++-2.6" /I"C:\gtkmm\include\libglademm-2.4" /I"C:\gtkmm\lib\glib-2.0\include" /I"C:\gtkmm\lib\gtk-2.0\include" /I"C:\gtkmm\lib\sigc++-2.0\include" /I"C:\gtkmm\lib\glibmm-2.4\include" /I"C:\gtkmm\lib\giomm-2.4\include" /I"C:\gtkmm\lib\cairomm-1.0\include" /I"C:\gtkmm\lib\pangomm-1.4\include" /I"C:\gtkmm\lib\atkmm-1.6\include" /I"C:\gtkmm\lib\gdkmm-2.4\include" /I"C:\gtkmm\lib\gtkmm-2.4\include" /I"C:\gtkmm\lib\libxml++-2.6\include" /I"C:\gtkmm\lib\libglademm-2.4\include" /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /wd4250 /analyze- /errorReport:prompt keithley_functions.cxx /vd2 
+         keithley_functions.cxx
+     1>keithley_functions.cxx(45): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(46): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>keithley_functions.cxx(46): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>keithley_functions.cxx(46): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(867) : see declaration of 'itoa'
+     1>keithley_functions.cxx(51): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(69): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.inl(112) : see declaration of 'localtime'
+     1>keithley_functions.cxx(73): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(79): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>keithley_functions.cxx(127): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(160): warning C4101: 'Buffer' : unreferenced local variable
+     1>keithley_functions.cxx(173): warning C4101: 'Buffer' : unreferenced local variable
+     1>keithley_functions.cxx(221): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(368): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(369): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>keithley_functions.cxx(386): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>keithley_functions.cxx(387): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>keithley_functions.cxx(396): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\manager\Documents\GitHub\artemis-keithley-interface\Debug\Kiethley 2410 Controller.exe" /INCREMENTAL /NOLOGO "GPIB-32.LIB" "C:\gtkmm\lib\glademm-vc100-d-2_4.lib" "C:\gtkmm\lib\xml++-vc100-d-2_6.lib" "C:\gtkmm\lib\gtkmm-vc100-d-2_4.lib" "C:\gtkmm\lib\gdkmm-vc100-d-2_4.lib" "C:\gtkmm\lib\atkmm-vc100-d-1_6.lib" "C:\gtkmm\lib\pangomm-vc100-d-1_4.lib" "C:\gtkmm\lib\cairomm-vc100-d-1_0.lib" "C:\gtkmm\lib\giomm-vc100-d-2_4.lib" "C:\gtkmm\lib\glibmm-vc100-d-2_4.lib" "C:\gtkmm\lib\sigc-vc100-d-2_0.lib" "C:\gtkmm\lib\glade-2.0.lib" C:\gtkmm\lib\libxml2.lib "C:\gtkmm\lib\gtk-win32-2.0.lib" "C:\gtkmm\lib\gdk-win32-2.0.lib" "C:\gtkmm\lib\gdk_pixbuf-2.0.lib" "C:\gtkmm\lib\atk-1.0.lib" "C:\gtkmm\lib\pangowin32-1.0.lib" "C:\gtkmm\lib\pangocairo-1.0.lib" "C:\gtkmm\lib\pango-1.0.lib" C:\gtkmm\lib\cairo.lib "C:\gtkmm\lib\gio-2.0.lib" "C:\gtkmm\lib\gobject-2.0.lib" "C:\gtkmm\lib\gmodule-2.0.lib" "C:\gtkmm\lib\glib-2.0.lib" C:\gtkmm\lib\intl.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Kiethley 2410 Controller.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\manager\Documents\GitHub\artemis-keithley-interface\Debug\Kiethley 2410 Controller.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\manager\Documents\GitHub\artemis-keithley-interface\Debug\Kiethley 2410 Controller.lib" /MACHINE:X86 "Debug\Kiethley 2410 Controller.exe.embed.manifest.res"
+         Debug\gui.obj
+         Debug\keithley_functions.obj
+         Debug\MyMain.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\Kiethley 2410 Controller.exe.embed.manifest" /manifest "Debug\Kiethley 2410 Controller.exe.intermediate.manifest"
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         Kiethley 2410 Controller.vcxproj -> C:\Users\manager\Documents\GitHub\artemis-keithley-interface\Debug\Kiethley 2410 Controller.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\Kiethley 2410 Controller.unsuccessfulbuild".
+         Touching "Debug\Kiethley 2410 Controller.lastbuildstate".
+     1>Done Building Project "C:\Users\manager\Documents\GitHub\artemis-keithley-interface\Kiethley 2410 Controller.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.11
+Time Elapsed 00:00:01.59

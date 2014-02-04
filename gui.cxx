@@ -14,8 +14,10 @@ HelloWorld::HelloWorld() : m_adjustment_amp(0.0, 0.0, 1000.0, 0.0000001, 0.0001,
 	m_adjustment_datum_number(0,0,1000),
 	m_spinbutton_datum_number(m_adjustment_datum_number),
 	m_table(5, 2, true),
-	m_button1("BEAM OFF measurement"),
-	m_button2("BEAM ON measurement"),
+	m_button1("Leakage Current"),
+	m_button2("PT1000 back"),
+	m_buttonfront("FRONT"),
+	m_buttonback("BACK"),
 	m_button_ivcurve("Take IV curve measurement"),
 	m_frame_currentbeamofffile("Current BEAM OFF File"),
 	m_label_currentbeamofffile("Not Selected"),
@@ -140,6 +142,8 @@ HelloWorld::HelloWorld() : m_adjustment_amp(0.0, 0.0, 1000.0, 0.0000001, 0.0001,
 	m_table.attach(m_button2, 1, 2, 1, 2);
 
 	m_button2.show();
+	m_buttonfront.show();
+	m_buttonback.show();
 
 	//m_spinbutton_amp.set_wrap();
 	//m_table.attach(m_spinbutton_amp, 0, 1, 0, 1);
@@ -200,7 +204,18 @@ HelloWorld::HelloWorld() : m_adjustment_amp(0.0, 0.0, 1000.0, 0.0000001, 0.0001,
 }
 
 HelloWorld::~HelloWorld() {}
+//new functions
 
+/*
+void HelloWorld::on_buttonfront_clicked() {
+select_front();
+}
+
+
+void HelloWorld::on_buttonback_clicked() {
+select_rear();
+}
+*/
 void HelloWorld::on_menu_file_quit()
 
 {
@@ -254,7 +269,7 @@ void HelloWorld::on_button1_clicked(Glib::ustring data)
 	timeinfo = localtime(&rawtime);
 
 	strftime(tmptime,10,"%X",timeinfo);
-	outfile << tmptime << "," << m_spinbutton_fluence.get_value() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.forward_voltage_measurement(0.001);
+	outfile << tmptime << "," << m_spinbutton_fluence.get_value() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.leakage_current_measurement(-10);
 
 	outfile.close();
 	if(outfile.is_open()){
@@ -304,11 +319,10 @@ void HelloWorld::on_button_ivcurve_clicked(Glib::ustring data)
 	char tmptime[10];
 	time(&rawtime);
 	timeinfo = localtime(&rawtime);
-
 	strftime(tmptime,10,"%X",timeinfo);
-	for(int i=0;i<210;i++) {
-		double j = 1e-9*pow(10,((double)i)/30.0); // finish off making it go from 1e-4 to 1e-2
-		outfile << tmptime << "," << m_spinbutton_fluence.get_value() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.forward_voltage_measurement(j);
+	for(int i=0;i<105;i++) {
+		double j = 1e-7*pow(10,((double)i)/21.0); // finish off making it go from 1e-4 to 1e-2
+		outfile << tmptime << "," << m_spinbutton_fluence.get_value() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.forward_voltage_measurement(j,0);
 	}
 
 	outfile.close();
@@ -346,7 +360,7 @@ void HelloWorld::on_button2_clicked(Glib::ustring data)
 	// and an input for the current at some point. TODO that.
 	// No need for an endl, when the program opens the file again, it starts a 
 	// new line.
-	outfile << m_spinbutton_fluence.get_value() << "E" << m_spinbutton_fluence_exp.get_value_as_int() << " " << kdevice.forward_voltage_measurement(0.001);
+	outfile << m_spinbutton_fluence.get_value() << "E" << m_spinbutton_fluence_exp.get_value_as_int() << " " << kdevice.forward_voltage_measurement(0.0001,1);
 
 	outfile.close();
 	if(outfile.is_open()){

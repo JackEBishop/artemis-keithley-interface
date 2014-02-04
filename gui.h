@@ -47,7 +47,7 @@ protected:
 	Gtk::VBox m_box1;
 	Gtk::Table m_table;
 
-	Gtk::Button m_button1, m_button2, m_button_file, m_button_folder;
+	Gtk::Button m_button1, m_button2, m_button_file, m_button_folder,m_buttonfront,m_buttonback;
 
 	Gtk::HBox m_box_fluence;
 	Gtk::Adjustment m_adjustment_amp;

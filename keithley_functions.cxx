@@ -9,7 +9,7 @@
 #include <fstream>
 #include "windows.h"
 #include "keithley_functions.h"
-
+#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
 KeithleyDevice::KeithleyDevice() {
@@ -241,7 +241,7 @@ string KeithleyDevice::leakage_current_measurement(double i_value) {
 		string temp;
 		temp = Buffer;
 	
-		Sleep(10);
+		Sleep(100);
 		this->write(":OUTP OFF");
 		cout << "Hopefully measured forward voltage at " << i_value << " A" << endl;
 		return temp;
@@ -317,7 +317,7 @@ string KeithleyDevice::forward_voltage_measurement(double i_value,bool select) {
 		this->write(":SOUR:FUNC CURR");
 		this->write(":SENS:FUNC 'VOLT:DC'");
 		this->write(":SENS:VOLT:RANGE:AUTO ON");
-		this->write(":SENS:VOLT:PROT 200"); //voltage protection level
+		this->write(":SENS:VOLT:PROT 1100"); //voltage protection level
 		this->write(":SOUR:CURR:MODE LIST"); // Set the source mode to list
 		this->write(":SENS:VOLT:DC:RANG 100");
 		tempcurrstream << ":SOUR:LIST:CURR " << i_value << "," << i_value << "," << i_value << ",0.0"; // List the measurements to take.
@@ -343,7 +343,9 @@ string KeithleyDevice::forward_voltage_measurement(double i_value,bool select) {
 		temp = Buffer;
 		Sleep(10);
 		this->write(":OUTP OFF");
-		cout << "Hopefully measured forward voltage at " << i_value << " A" << endl;
+		if(i_value==0.001) {
+		cout << "VF= " << temp << endl;
+		}
 		return temp;
 	//}
 

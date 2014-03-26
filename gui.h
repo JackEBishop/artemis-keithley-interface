@@ -1,6 +1,6 @@
 #ifndef GTKMM_GUI_H
 #define GTKMM_GUI_H
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <gtkmm.h>
 #include <gtkmm/box.h>
 #include "keithley_functions.h"
@@ -47,7 +47,7 @@ protected:
 	Gtk::VBox m_box1;
 	Gtk::Table m_table;
 
-	Gtk::Button m_button1, m_button2, m_button_file, m_button_folder,m_buttonfront,m_buttonback;
+	Gtk::Button m_button, m_button1, m_button2, m_button_file, m_button_folder,m_buttonfront,m_buttonback;
 
 	Gtk::HBox m_box_fluence;
 	Gtk::Adjustment m_adjustment_amp;

@@ -4,7 +4,7 @@
 #include <fstream>
 #include <cstdio>
 #include <cmath>
-
+#define _CRT_SECURE_NO_WARNINGS
 HelloWorld::HelloWorld() : m_adjustment_amp(0.0, 0.0, 1000.0, 0.0000001, 0.0001, 0.0), // for the spinbutton
 	m_spinbutton_amp(m_adjustment_amp),
 	m_adjustment_fluence(0.0,0.0,1000.0,0.01,0.1,0.0),
@@ -14,6 +14,7 @@ HelloWorld::HelloWorld() : m_adjustment_amp(0.0, 0.0, 1000.0, 0.0000001, 0.0001,
 	m_adjustment_datum_number(0,0,1000),
 	m_spinbutton_datum_number(m_adjustment_datum_number),
 	m_table(5, 2, true),
+	m_button("One VF"),
 	m_button1("Leakage Current"),
 	m_button2("PT1000 back"),
 	m_buttonfront("FRONT"),
@@ -126,14 +127,16 @@ HelloWorld::HelloWorld() : m_adjustment_amp(0.0, 0.0, 1000.0, 0.0000001, 0.0001,
 	//with a pointer to "button 1" as its argument
 	m_button1.signal_clicked().connect(sigc::bind<Glib::ustring>(
 		sigc::mem_fun(*this, &HelloWorld::on_button1_clicked), "button 1 "));
-
+	m_button.signal_clicked().connect(sigc::bind<Glib::ustring>(
+		sigc::mem_fun(*this,&HelloWorld::on_button_clicked),"One VF"));
 	m_button_ivcurve.signal_clicked().connect(sigc::bind<Glib::ustring>(
 		sigc::mem_fun(*this, &HelloWorld::on_button_ivcurve_clicked), "button ivcurve "));
 
 	//instead of gtk_container_add, we pack this button into the invisible
 	//box, which has been packind into the window.
 	m_table.attach(m_button1, 0, 1, 1, 2);
-
+	m_table.attach(m_button, 0, 1, 0, 1);
+	m_button.show();
 	m_button1.show();
 
 	m_button2.signal_clicked().connect(sigc::bind<-1, Glib::ustring>(
@@ -235,13 +238,49 @@ void HelloWorld::on_menu_others()
 void HelloWorld::on_button_clicked(Glib::ustring data)
 {
 	std::cout <<"Hello World -" << data << "was pressed" << std::endl;
+	std::cout <<"Measuring Vf once"<<std::endl;
+		ofstream outfile;
+
+	outfile.open(filenamebeamoff.c_str(), ios::app);
+
+	if(outfile.is_open()) {
+		cout << "Outputting to file";
+	} else{
+		// This dialog should pop up when the file is not present, but for some reason it does not.
+	Gtk::MessageDialog dialog(*this, "Problems outputting to the file; measurement will not be recorded",
+		false, Gtk::MESSAGE_ERROR,
+		Gtk::BUTTONS_CLOSE);
+	}
+	
+	ofstream outfile3;
+
+	outfile3.open("vfsingles.txt", ios::app);
+
+	if(outfile3.is_open()) {
+		cout << "Outputting to file";
+	} else{
+		// This dialog should pop up when the file is not present, but for some reason it does not.
+	Gtk::MessageDialog dialog(*this, "Problems outputting to the file; measurement will not be recorded",
+		false, Gtk::MESSAGE_ERROR,
+		Gtk::BUTTONS_CLOSE);
+	}
+		time_t rawtime;
+	struct tm * timeinfo;
+	char tmptime[10];
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+
+	strftime(tmptime,10,"%X",timeinfo);
+	outfile3 << tmptime << "," <<	m_spinbutton_datum_number.get_value_as_int() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.forward_voltage_measurement(0.001,0);
+	outfile << tmptime << "," << 	m_spinbutton_datum_number.get_value_as_int() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.leakage_current_measurement(-10);
+	
 }
 
 void HelloWorld::on_button1_clicked(Glib::ustring data)
 {
 	std::cout <<"Hello World -" << data << "was pressed" << std::endl;
 
-	cout << "Also, try to measure voltage at 1 mA" << endl;
+	cout << "Leakage current measurement" << endl;
 
 	// Opening file for read in
 	ofstream outfile;
@@ -269,7 +308,7 @@ void HelloWorld::on_button1_clicked(Glib::ustring data)
 	timeinfo = localtime(&rawtime);
 
 	strftime(tmptime,10,"%X",timeinfo);
-	outfile << tmptime << "," << m_spinbutton_fluence.get_value() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.leakage_current_measurement(-10);
+	outfile << tmptime << "," << 	m_spinbutton_datum_number.get_value_as_int() << "e" << m_spinbutton_fluence_exp.get_value_as_int() << "," << kdevice.leakage_current_measurement(-10);
 
 	outfile.close();
 	if(outfile.is_open()){
@@ -286,7 +325,7 @@ void HelloWorld::on_button_ivcurve_clicked(Glib::ustring data)
 {
 	std::cout <<"Hello World -" << data << "was pressed" << std::endl;
 
-	cout << "Also, try to measure voltage at 1 mA" << endl;
+	cout << "IV" << endl;
 
 	// Opening file for read in
 	ofstream outfile;
@@ -340,7 +379,7 @@ void HelloWorld::on_button2_clicked(Glib::ustring data)
 {
 	std::cout <<"Hello World -" << data << "was pressed" << std::endl;
 
-	cout << "Also, try to measure voltage at 1 mA" << endl;
+	cout << "PT1000" << endl;
 
 	// Opening file for read in
 	ofstream outfile;

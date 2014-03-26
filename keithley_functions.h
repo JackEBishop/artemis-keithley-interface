@@ -1,6 +1,6 @@
 #ifndef KEITHLEY_FUNCTIONS
 #define KEITHLEY_FUNCTIONS
-
+#define _CRT_SECURE_NO_WARNINGS
 #define EARM  22  // The ibnotify Callback failed to rearm
 #define EHDL  23  // The input handle is invalid
 #define EWIP  26  // Wait already in progress on input ud
